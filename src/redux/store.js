@@ -2,8 +2,10 @@ import { configureStore } from '@reduxjs/toolkit'; // Импортируем ф�
 import authReducer from './authSlice'; // Импортируем редьюсер для аутентификации
 
 // Конфигурируем хранилище Redux с использованием Redux Toolkit
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    auth: authReducer,  // Подключаем редьюсер для аутентификации
+    user: authReducer,  // Подключаем редьюсер для аутентификации
   },
 });
+
+export default store;

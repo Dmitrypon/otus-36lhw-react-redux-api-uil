@@ -1,0 +1,41 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Кнопки сверху */
+    height: 100vh;
+    padding-top: 50px; /* Отступ сверху */     
+    background-color: #f9f9fb;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;    
+  }  
+
+  .home-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    background-color: #f3f5f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .home-container nav {
+    display: flex;
+    flex-direction: column; /* Кнопки в колонку */
+    align-items: center; /* Центрирование */
+    gap: 15px;
+    background-color: #f4f6f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .home-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 300px;
+    cursor: pointer;
+    margin: 10px 5px; /* Одинаковый отступ по вертикали */
+    background-color: #779ad4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

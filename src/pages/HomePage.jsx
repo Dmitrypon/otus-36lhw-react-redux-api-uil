@@ -1,15 +1,43 @@
-import React from 'react';
-import { useSelector } from 'react-redux';  // Хук для доступа к состоянию Redux
-import { Navigate } from 'react-router-dom';  // Компонент для перенаправления на другую страницу
- 
-const HomePage = () => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);  // Проверка авторизации из Redux
- 
-  if (!isAuthenticated) {  // Если пользователь не авторизован
-    return <Navigate to="/login" />;  // Перенаправляем на страницу логина
+import { Navigate, Link } from "react-router-dom"; // Добавили Link
+import { useSelector, useDispatch } from "react-redux"; // Добавили useSelector, useDispatch
+import { login, logout } from "../redux/authSlice"; // Импорт экшена (если он в userSlice)
+import "../styles/homeStyle.css";
+
+const HomePage = () => {  
+  const user = useSelector((state) => state.user.value); 
+  //const user = useSelector((state) => null);    // Вот так проверю
+  //return <h1>Hello, {user.nickname}!</h1>;
+  console.log("User in HomePage:", user); // Проверяем, есть ли пользователь 
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+ }; 
+
+  // Если пользователь не авторизован, перенаправляем на страницу логина
+   if (!user) { 
+    return <Navigate to="/login" />;
   }
- 
-  return <div>Welcome to the Home Page!</div>;  // Если авторизован, показываем главную страницу
+
+ // useEffect(() => {
+ //   if (!dataLoaded) { // Проверяем, загружены ли данные
+ //     dispatch(fetchData());
+  //  }
+  //}, [dispatch, dataLoaded]); //
+  
+  return (
+<div className="home-container">
+<h1>Home Page OTUS</h1>
+<p>Выберите страницу:</p>
+  <nav>
+    <Link to="/login"><button>Login</button></Link>
+    <Link to="/register"><button>Register</button></Link>
+    <Link to="/notfound"><button>NotFound</button></Link>
+    <button onClick={handleLogout}>Logout</button> 
+  </nav>  
+</div>
+  );
 };
- 
+
 export default HomePage;

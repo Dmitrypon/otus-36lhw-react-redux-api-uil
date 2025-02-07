@@ -5,8 +5,7 @@ import "../styles/homeStyle.css";
 
 const HomePage = () => {  
   const user = useSelector((state) => state.user.value); 
-  //const user = useSelector((state) => null);    // Вот так проверю
-  //return <h1>Hello, {user.nickname}!</h1>;
+  //const user = useSelector((state) => null);    
   console.log("User in HomePage:", user); // Проверяем, есть ли пользователь 
 
   const dispatch = useDispatch();
@@ -18,17 +17,16 @@ const HomePage = () => {
   // Если пользователь не авторизован, перенаправляем на страницу логина
    if (!user) { 
     return <Navigate to="/login" />;
-  }
-
+  } 
  // useEffect(() => {
  //   if (!dataLoaded) { // Проверяем, загружены ли данные
  //     dispatch(fetchData());
   //  }
-  //}, [dispatch, dataLoaded]); //
-  
+  //}, [dispatch, dataLoaded]); //  
   return (
 <div className="home-container">
 <h1>Home Page OTUS</h1>
+{(user.nickname) && <h1>Hello, {user.nickname}!</h1>}
 <p>Выберите страницу:</p>
   <nav>
     <Link to="/login"><button>Login</button></Link>
